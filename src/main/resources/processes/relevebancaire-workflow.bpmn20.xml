@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="relevebancaire-workflow" name="relevebancaire-workflow" isExecutable="true">
+    <startEvent id="sid-d79f528c-6323-42ed-8dc3-e4bdfdddf0f2"/>
+    <userTask id="sid-4131471b-5de5-4760-97c7-c651b27c0258" name="releveName" activiti:assignee="releveAssignee">
+      <documentation>releveDocumentation</documentation>
+    </userTask>
+    <endEvent id="sid-2ea43a9a-6484-4ce6-9b19-5f3621f1c8c5"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_relevebancaire-workflow">
+    <bpmndi:BPMNPlane bpmnElement="relevebancaire-workflow" id="BPMNPlane_relevebancaire-workflow">
+      <bpmndi:BPMNShape id="shape-3a681ac3-19f4-43b0-b238-a18df3d658d7" bpmnElement="sid-d79f528c-6323-42ed-8dc3-e4bdfdddf0f2">
+        <omgdc:Bounds x="-160.0" y="-10.0" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-679c6090-6563-4999-80ca-b055fb8f1cf8" bpmnElement="sid-4131471b-5de5-4760-97c7-c651b27c0258">
+        <omgdc:Bounds x="-85.0" y="-35.0" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-a4720eb7-9097-4e01-a2f1-5d4f8ccd51bb" bpmnElement="sid-2ea43a9a-6484-4ce6-9b19-5f3621f1c8c5">
+        <omgdc:Bounds x="95.0" y="-10.0" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
