@@ -1,0 +1,31 @@
+feign:
+    client:
+        config:
+            default:
+                connectTimeout: 160000000
+                readTimeout: 160000000
+relevebancaire:
+    ribbon:
+        listOfServers: http://localhost:8080
+ribbon:
+    eureka:
+        enabled: true
+server:
+    address: 127.0.0.1
+    port: 8081
+    servlet:
+        context-path: /api/v1
+spring:
+    application:
+        name: activiti-workflow
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: root
+        url: jdbc:mysql://localhost:3306/releve-bancaire-cdg
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
