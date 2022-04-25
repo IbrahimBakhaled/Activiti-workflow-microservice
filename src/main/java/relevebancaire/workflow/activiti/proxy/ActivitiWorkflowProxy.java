@@ -7,9 +7,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import relevebancaire.workflow.activiti.model.ReleveBancaire;
 
-@FeignClient(name = "relevebancaire", url = "http://localhost:8080/api/v1")
+@FeignClient(name = "relevebancaire/api/v1")
 @RibbonClient(name = "relevebancaire")
     public interface ActivitiWorkflowProxy {
 
@@ -19,6 +20,10 @@ import relevebancaire.workflow.activiti.model.ReleveBancaire;
 
   @GetMapping("/relevebancaire")
   List<ReleveBancaire> getReleveBancaires();
+
+
+  @PostMapping("/relevebancaire/qualification/{relevebancaireId}")
+  ResponseEntity<ReleveBancaire> qualificationrelevebancaire(@PathVariable Long relevebancaireId);
 
 
 }
