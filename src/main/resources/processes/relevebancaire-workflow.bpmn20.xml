@@ -2,8 +2,11 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
   <process id="relevebancaire-workflow" name="relevebancaire-workflow" isExecutable="true">
     <startEvent id="sid-d79f528c-6323-42ed-8dc3-e4bdfdddf0f2"/>
-    <userTask id="sid-4131471b-5de5-4760-97c7-c651b27c0258" name="Task-1" activiti:assignee="Ibrahim-Assignee">
+    <userTask id="sid-4131471b-5de5-4760-97c7-c651b27c0258" name="Integration-Releve-Bancaire" activiti:assignee="Gestionnaire-Integration">
       <documentation>Releve Bancaire Documentation</documentation>
+      <extensionElements>
+        <activiti:formProperty id="Releve Bancaire ID-PropertyID" name="Releve Bancaire ID-PropertyName" variable="relevebancaireId"/>
+      </extensionElements>
     </userTask>
     <endEvent id="sid-2ea43a9a-6484-4ce6-9b19-5f3621f1c8c5"/>
     <sequenceFlow id="sid-2dcd5516-cb96-4d7b-a5b0-5c36bfb9324b" sourceRef="sid-d79f528c-6323-42ed-8dc3-e4bdfdddf0f2" targetRef="sid-4131471b-5de5-4760-97c7-c651b27c0258"/>
@@ -12,21 +15,21 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_relevebancaire-workflow">
     <bpmndi:BPMNPlane bpmnElement="relevebancaire-workflow" id="BPMNPlane_relevebancaire-workflow">
       <bpmndi:BPMNShape id="shape-3a681ac3-19f4-43b0-b238-a18df3d658d7" bpmnElement="sid-d79f528c-6323-42ed-8dc3-e4bdfdddf0f2">
-        <omgdc:Bounds x="-160.0" y="-10.0" width="30.0" height="30.0"/>
+        <omgdc:Bounds x="155.0" y="-100.0" width="30.0" height="30.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape-679c6090-6563-4999-80ca-b055fb8f1cf8" bpmnElement="sid-4131471b-5de5-4760-97c7-c651b27c0258">
-        <omgdc:Bounds x="-85.0" y="-35.0" width="100.0" height="80.0"/>
+        <omgdc:Bounds x="230.0" y="-125.0" width="100.0" height="80.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape-a4720eb7-9097-4e01-a2f1-5d4f8ccd51bb" bpmnElement="sid-2ea43a9a-6484-4ce6-9b19-5f3621f1c8c5">
-        <omgdc:Bounds x="95.0" y="-10.0" width="30.0" height="30.0"/>
+        <omgdc:Bounds x="410.0" y="-100.0" width="30.0" height="30.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge-59ec7422-96a5-4c8a-a912-da8fc30e8620" bpmnElement="sid-2dcd5516-cb96-4d7b-a5b0-5c36bfb9324b">
-        <omgdi:waypoint x="-130.0" y="5.0"/>
-        <omgdi:waypoint x="-85.0" y="5.0"/>
+        <omgdi:waypoint x="185.0" y="-85.0"/>
+        <omgdi:waypoint x="230.0" y="-85.0"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge-8831cba9-20aa-410a-9f90-1b6579d44b5a" bpmnElement="sid-0acc7e11-d81a-4de7-9c68-76e6eea701cf">
-        <omgdi:waypoint x="15.0" y="5.0"/>
-        <omgdi:waypoint x="95.0" y="5.0"/>
+        <omgdi:waypoint x="330.0" y="-85.0"/>
+        <omgdi:waypoint x="410.0" y="-85.0"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

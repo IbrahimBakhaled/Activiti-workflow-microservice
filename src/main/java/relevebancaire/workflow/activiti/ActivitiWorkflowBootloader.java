@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.impl.persistence.entity.ByteArrayEntity;
+import org.activiti.engine.impl.variable.ValueFields;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
