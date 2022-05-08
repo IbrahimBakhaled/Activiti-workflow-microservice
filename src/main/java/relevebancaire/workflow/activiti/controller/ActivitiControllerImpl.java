@@ -56,8 +56,8 @@ public class ActivitiControllerImpl implements ActivitiController {
 
 
   @RequestMapping(value = "/process")
-  public String startProcessInstance(@RequestParam Long relevebancaireId) {
-    return processService.startTheProcess(relevebancaireId);
+  public ResponseEntity<String> startProcessInstance(@RequestParam Long relevebancaireId) {
+    return new ResponseEntity<>(processService.startTheProcess(relevebancaireId), HttpStatus.OK);
   }
 
   // Retrieve the tasks assigned to an employee

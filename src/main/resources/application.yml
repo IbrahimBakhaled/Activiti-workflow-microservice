@@ -18,7 +18,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: root
-        url: jdbc:mysql://localhost:3306/releve-bancaire-cdg?useSSL=false
+        url: jdbc:mysql://localhost:3306/releve-bancaire-cdg?useSSL=false&serverTimezone=UTC
         username: root
     jpa:
         hibernate:
