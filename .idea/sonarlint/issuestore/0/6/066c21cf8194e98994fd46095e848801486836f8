@@ -1,0 +1,56 @@
+
+K
+java:S1191"5Use classes from the Java API instead of Sun classes.(×ªò
+G
+java:S1602]",Remove useless curly braces around statement(¥ŞšÚúÿÿÿÿ
+\
+java:S1117i"ARename "processEngine" which hides the field declared at line 67.(ìø€Æùÿÿÿÿ
+Z
+java:S1117j"?Rename "taskService" which hides the field declared at line 58.(Ş÷Ê•øÿÿÿÿ
+S	java:S106p"9Replace this use of System.out or System.err by a logger.(µ¾ÜÇıÿÿÿÿ
+T	java:S106‹"9Replace this use of System.out or System.err by a logger.(ÒùÁªşÿÿÿÿ
+X
+java:S1128"BRemove this unused import 'javax.swing.text.html.HTML.Tag.SELECT'.(ºÕ®¸
+i
+java:S1128"SRemove this unused import 'org.hibernate.hql.internal.antlr.HqlSqlTokenTypes.FROM'.(Ãš¯
+j
+java:S1128"TRemove this unused import 'org.hibernate.hql.internal.antlr.HqlSqlTokenTypes.WHERE'.(ÌÛ€ä
+S
+java:S1128"=Remove this unused import 'com.sun.source.tree.VariableTree'.(×ªò
+F
+java:S1128	"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+M
+java:S1128
+"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ
+`
+java:S1128"ERemove this unused import 'javax.lang.model.element.VariableElement'.(•ªËÈúÿÿÿÿ
+l
+java:S1128"QRemove this unused import 'org.activiti.engine.history.HistoricActivityInstance'.(‚Ó‡øÿÿÿÿÿ
+b
+java:S1128"GRemove this unused import 'org.activiti.engine.history.HistoricDetail'.(˜Œıÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.activiti.engine.history.HistoricProcessInstance'.(×óñºúÿÿÿÿ
+c
+java:S1128"MRemove this unused import 'org.activiti.engine.history.HistoricTaskInstance'.(¤Æ±š
+l
+java:S1128"VRemove this unused import 'org.activiti.engine.history.HistoricVariableInstanceQuery'.(øÌ°ß
+j
+java:S1128"ORemove this unused import 'org.activiti.engine.history.HistoricVariableUpdate'.(Ò…°ôúÿÿÿÿ
+s
+java:S1128"XRemove this unused import 'org.activiti.engine.impl.persistence.entity.ByteArrayEntity'.(ïı¼ôıÿÿÿÿ
+}
+java:S1128 "gRemove this unused import 'org.activiti.engine.impl.persistence.entity.HistoricVariableInstanceEntity'.(¿íİÈ
+o
+java:S1128!"YRemove this unused import 'org.activiti.engine.impl.persistence.entity.VariableInstance'.(„ËŒ
+z
+java:S1128""_Remove this unused import 'org.activiti.engine.impl.persistence.entity.VariableInstanceEntity'.(¼†¿‚ıÿÿÿÿ
+e
+java:S1128#"JRemove this unused import 'org.activiti.engine.impl.variable.ValueFields'.(»‰«çıÿÿÿÿ
+b
+java:S1128$"LRemove this unused import 'org.activiti.engine.impl.variable.VariableTypes'.(¥òî
+^
+java:S1128&"HRemove this unused import 'org.activiti.engine.runtime.ProcessInstance'.(¢¼Ùİ
+q
+java:S1128)"VRemove this unused import 'org.apache.tomcat.util.descriptor.tld.TldRuleSet.Variable'.(®€È˜ûÿÿÿÿ
+e
+java:S1128+"JRemove this unused import 'org.springframework.data.jpa.repository.Query'.(Äºöïşÿÿÿÿ

@@ -1,6 +1,11 @@
 package relevebancaire.workflow.activiti.dto;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +18,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table
+@Entity
 public class TaskDto {
-  private String releveBancaireId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int taskId;
+  private int releveBancaireId;
   private String variableName;
   private String variableTypeName;
   private String proccessesName;
@@ -26,4 +36,5 @@ public class TaskDto {
   private String processDefinitionId;
   private String processInstanceId;
   private Date createTime;
+
 }

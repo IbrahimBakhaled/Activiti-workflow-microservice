@@ -5,3 +5,17 @@ Osrc/main/java/relevebancaire/workflow/activiti/proxy/ActivitiWorkflowProxy.java
 Qsrc/main/java/relevebancaire/workflow/activiti/controller/ActivitiController.java,c\1\c1c734e11b65552d0a1b9e2c755ec0954bd76175
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+C
+hs_err_pid14552.log,4\6\4658a1f2025cfe1d1050fb6abc3907fee6ba378f
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+C
+hs_err_pid20032.log,a\9\a9927a140d2d1ab87a754112b1e5e57c0ac94241
+~
+Nsrc/main/java/relevebancaire/workflow/activiti/ActivitiWorkflowBootloader.java,0\8\081b5cc0036210cd127d5e8a38353b6466419b5e
+o
+?src/main/java/relevebancaire/workflow/activiti/dto/TaskDto.java,1\d\1dc967d927bf70ad51dc0487411f7983c1ae92e7
+z
+Jsrc/main/java/relevebancaire/workflow/activiti/service/ProcessService.java,0\6\066c21cf8194e98994fd46095e848801486836f8
+…
+Usrc/main/java/relevebancaire/workflow/activiti/controller/ActivitiControllerImpl.java,2\b\2bf6c3ee0bf738b1d73f8d9fc5eb69eca9153002
