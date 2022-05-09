@@ -11,5 +11,6 @@ import relevebancaire.workflow.activiti.dto.TaskDto;
 @Transactional
 public interface TaskRepository extends JpaRepository<TaskDto, Integer> {
 
-  void deleteByTaskId(String taskId);
+  void deleteByTaskId(int taskId);
+  TaskDto findByTaskId(int id);
 }

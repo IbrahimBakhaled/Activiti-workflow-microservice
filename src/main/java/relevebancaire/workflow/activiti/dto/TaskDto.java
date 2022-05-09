@@ -30,7 +30,7 @@ public class TaskDto {
   private String variableName;
   private String variableTypeName;
   private String proccessesName;
-  private String taskId;
+  private int taskId;
   private String assignee;
   private String name;
   private String description;

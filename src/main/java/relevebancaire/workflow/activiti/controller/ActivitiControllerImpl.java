@@ -69,7 +69,7 @@ public class ActivitiControllerImpl implements ActivitiController {
 
 
   @GetMapping("/task/{id}")
-   public ResponseEntity<TaskDto> getTaskById(@PathVariable String id){
+   public ResponseEntity<TaskDto> getTaskById(@PathVariable int id){
     return new ResponseEntity<>(processService.getTaskById(id), HttpStatus.OK);
   }
 
@@ -77,7 +77,7 @@ public class ActivitiControllerImpl implements ActivitiController {
 
   // Complete the task by their ID
   @RequestMapping(value = "/completetask")
-  public String completeTask(@RequestParam String taskId) {
+  public String completeTask(@RequestParam int taskId) {
     processService.completeTask(taskId);
     return "Task with id " + taskId + " has been completed!";
   }

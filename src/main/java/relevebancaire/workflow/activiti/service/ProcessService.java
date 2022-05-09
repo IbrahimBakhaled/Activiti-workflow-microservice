@@ -78,37 +78,16 @@ public class ProcessService {
     ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
     TaskService taskService = processEngine.getTaskService();
     List<Task> taskList = taskService.createTaskQuery().orderByTaskCreateTime().asc().list();
-    List<Task> tasks = taskService.createTaskQuery().taskDefinitionKey("sid-4131471b-5de5-4760-97c7-c651b27c0258").includeProcessVariables().orderByTaskCreateTime().desc().list();
-    List<String> releveBancaireList = new ArrayList<>();
-
-    String mapReleveBancaireId = null;
 
     variables = runtimeService.getVariables(processInstance.getId());
     System.out.println("Variables " + variables);
-//    for (int i=0; i<tasks.size(); i++){
-//      Map<String, Object> mapVariables = tasks.get(i).getProcessVariables();
-//      Map.Entry<String, Object> stringObjectEntry = mapVariables.entrySet().iterator().next();
-//      mapReleveBancaireId = stringObjectEntry.getValue().toString();
-//      releveBancaireList.add(mapReleveBancaireId);
-//    }
 
-
-//    System.out.println("releveBancaireList " + releveBancaireList);
-
-//    for (Task task : tasks) {
-//      Map<String, Object> mapVariables = task.getProcessVariables();
-//      Map.Entry<String, Object> stringObjectEntry = mapVariables.entrySet().iterator().next();
-////      for (Entry<String, Object> stringObjectEntry : mapVariables.entrySet())
-//      mapReleveBancaireId = stringObjectEntry.getValue().toString();
-//      releveBancaireList.add(mapReleveBancaireId);
-//      System.out.println("this output coming from the value of Map " + mapReleveBancaireId);
-//    }
 
     for (HistoricVariableInstance variableInstance : historicVariableInstance) {
       variableName = variableInstance.getVariableName();
       variableTypeName = variableInstance.getVariableTypeName();
     }
-    String taskId =null;
+    int taskId = 0;
     String taskAssignee = null;
     String taskName = null;
     String taskDescription= null;
@@ -116,7 +95,7 @@ public class ProcessService {
     String taskProcessDefinitionId= null;
     Date taskCreateTime= null;
     for (Task task: taskList){
-      taskId = task.getId();
+      taskId = Integer.parseInt(task.getId());
       taskAssignee = task.getAssignee();
       taskName = task.getName();
       taskDescription = task.getDescription();
@@ -124,44 +103,19 @@ public class ProcessService {
       taskProcessDefinitionId = task.getProcessDefinitionId();
       taskCreateTime = task.getCreateTime();
     }
-
-
-//    List<Task> taskList = taskService.createTaskQuery().taskAssignee(assignee).list();
     String finalVariableName = variableName;
     String finalVariableTypeName = variableTypeName;
 
-    String finalTaskId = taskId;
+    int finalTaskId = taskId;
     String finalTaskAssignee = taskAssignee;
     String finalTaskName = taskName;
     String finalTaskDescription = taskDescription;
     String finalTaskProcessDefinitionId = taskProcessDefinitionId;
     int finalTaskPriority = taskPriority;
     Date finalTaskCreateTime = taskCreateTime;
-//    for (int i = 0; i<releveBancaireList.size(); i++){
-//
-//    }
-
-//    releveBancaireList.forEach(l -> {
-//        TaskDto taskDto = new TaskDto();
-////        System.out.println(l);
-//        taskDto.setReleveBancaireId(Integer.parseInt(l));
-//        taskDto.setVariableName(finalVariableName);
-//        taskDto.setVariableTypeName(finalVariableTypeName);
-//        taskDto.setProccessesName(processDefinition.getName());
-//        taskDto.setTaskId(finalTaskId);
-//        taskDto.setAssignee(finalTaskAssignee);
-//        taskDto.setName(finalTaskName);
-//        taskDto.setDescription(finalTaskDescription);
-//        taskDto.setPriority(finalTaskPriority);
-//        taskDto.setProcessDefinitionId(finalTaskProcessDefinitionId);
-//        taskDto.setCreateTime(finalTaskCreateTime);
-////        System.out.println("shwoing task dto " + taskDto);
-//        taskRepository.save(taskDto);
-//    });
 
     TaskDto taskDto = new TaskDto();
     Entry<String, Object> testVariable = variables.entrySet().iterator().next();
-    System.out.println("variables.values().toString(); " + testVariable.getValue().toString());
         taskDto.setReleveBancaireId(Integer.parseInt(testVariable.getValue().toString()));
         taskDto.setVariableName(finalVariableName);
         taskDto.setVariableTypeName(finalVariableTypeName);
@@ -173,7 +127,7 @@ public class ProcessService {
         taskDto.setPriority(finalTaskPriority);
         taskDto.setProcessDefinitionId(finalTaskProcessDefinitionId);
         taskDto.setCreateTime(finalTaskCreateTime);
-//        System.out.println("shwoing task dto " + taskDto);
+
         taskRepository.save(taskDto);
     return processInformation();
   }
@@ -212,50 +166,15 @@ public class ProcessService {
     return taskRepository.findAll();
   }
 
-  public TaskDto getTaskById(String id){
-    ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().singleResult();
-    List<HistoricVariableInstance> historicVariableInstance = historyService.createHistoricVariableInstanceQuery().list();
-    String variableName= null;
-    String variableTypeName = null;
-    List<Task> tasks = taskService.createTaskQuery().taskDefinitionKey("sid-4131471b-5de5-4760-97c7-c651b27c0258").includeProcessVariables().orderByTaskCreateTime().desc().list();
-    for (HistoricVariableInstance variableInstance : historicVariableInstance) {
-      variableName = variableInstance.getVariableName();
-      variableTypeName = variableInstance.getVariableTypeName();
-    }
-    for (Task task : tasks) {
-      Map<String, Object> variables = task.getProcessVariables();
-      for (Entry<String, Object> stringObjectEntry : variables.entrySet()) {
-        System.out.println("task by id <String, Object> " + stringObjectEntry.getValue());
-        releveBancaireId = stringObjectEntry.getValue().toString();
-      }
-    }
-    Task task = taskService.createTaskQuery().taskId(id).singleResult();
-    String finalVariableName = variableName;
-    String finalVariableTypeName = variableTypeName;
-    String finalReleveBancaireId = releveBancaireId;
-    TaskDto taskDto = new TaskDto();
-    taskDto.setReleveBancaireId(Integer.parseInt(finalReleveBancaireId));
-    taskDto.setVariableName(finalVariableName);
-    taskDto.setVariableTypeName(finalVariableTypeName);
-    taskDto.setProccessesName(processDefinition.getName());
-    taskDto.setTaskId(task.getId());
-    taskDto.setAssignee(task.getAssignee());
-    taskDto.setName(task.getName());
-    taskDto.setDescription(task.getDescription());
-    taskDto.setPriority(task.getPriority());
-    taskDto.setProcessDefinitionId(task.getProcessDefinitionId());
-    taskDto.setCreateTime(task.getCreateTime());
-    System.out.println("shwoing task by id " + taskDto);
-    taskRepository.save(taskDto);
-    return taskDto;
+  public TaskDto getTaskById(int id){
+    return taskRepository.findByTaskId(id);
   }
 
 
   // complete the task
-  public void completeTask(String taskId) {
+  public void completeTask(int taskId) {
 
-    taskService.complete(taskId);
+    taskService.complete(String.valueOf(taskId));
     taskRepository.deleteByTaskId(taskId);
   }
-
 }
