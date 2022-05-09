@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.lang.model.element.VariableElement;
+import java.util.Objects;
+
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.ManagementService;
 import org.activiti.engine.ProcessEngine;
@@ -22,34 +22,23 @@ import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
-import org.activiti.engine.history.HistoricActivityInstance;
-import org.activiti.engine.history.HistoricDetail;
-import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.history.HistoricVariableInstance;
-import org.activiti.engine.history.HistoricVariableInstanceQuery;
-import org.activiti.engine.history.HistoricVariableUpdate;
-import org.activiti.engine.impl.persistence.entity.ByteArrayEntity;
-import org.activiti.engine.impl.persistence.entity.HistoricVariableInstanceEntity;
-import org.activiti.engine.impl.persistence.entity.VariableInstance;
-import org.activiti.engine.impl.persistence.entity.VariableInstanceEntity;
-import org.activiti.engine.impl.variable.ValueFields;
-import org.activiti.engine.impl.variable.VariableTypes;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 
-import org.apache.tomcat.util.descriptor.tld.TldRuleSet.Variable;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import relevebancaire.workflow.activiti.dao.TaskRepository;
 import relevebancaire.workflow.activiti.dto.TaskDto;
 import relevebancaire.workflow.activiti.proxy.ActivitiWorkflowProxy;
 
 @Service
+@Transactional
 public class ProcessService {
 
   @Autowired
@@ -82,7 +71,7 @@ public class ProcessService {
     Map<String, Object> variables = new HashMap<>();
     variables.put("relevebancaireId", relevebancaireId);
 
-    runtimeService.startProcessInstanceByKey("relevebancaire-workflow", variables);
+    ProcessInstance processInstance =  runtimeService.startProcessInstanceByKey("relevebancaire-workflow", variables);
 
     ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().singleResult();
     List<HistoricVariableInstance> historicVariableInstance = historyService.createHistoricVariableInstanceQuery().list();
@@ -92,10 +81,19 @@ public class ProcessService {
     List<Task> tasks = taskService.createTaskQuery().taskDefinitionKey("sid-4131471b-5de5-4760-97c7-c651b27c0258").includeProcessVariables().orderByTaskCreateTime().desc().list();
     List<String> releveBancaireList = new ArrayList<>();
 
+    String mapReleveBancaireId = null;
 
-    String mapReleveBancaireId;
+    variables = runtimeService.getVariables(processInstance.getId());
+    System.out.println("Variables " + variables);
+//    for (int i=0; i<tasks.size(); i++){
+//      Map<String, Object> mapVariables = tasks.get(i).getProcessVariables();
+//      Map.Entry<String, Object> stringObjectEntry = mapVariables.entrySet().iterator().next();
+//      mapReleveBancaireId = stringObjectEntry.getValue().toString();
+//      releveBancaireList.add(mapReleveBancaireId);
+//    }
 
 
+//    System.out.println("releveBancaireList " + releveBancaireList);
 
 //    for (Task task : tasks) {
 //      Map<String, Object> mapVariables = task.getProcessVariables();
@@ -143,33 +141,40 @@ public class ProcessService {
 //
 //    }
 
-    for (int i=0; i<tasks.size(); i++){
-      Map<String, Object> mapVariables = tasks.get(i).getProcessVariables();
-      Map.Entry<String, Object> stringObjectEntry = mapVariables.entrySet().iterator().next();
-      mapReleveBancaireId = stringObjectEntry.getValue().toString();
-      releveBancaireList.add(mapReleveBancaireId);
-    }
-    releveBancaireList.forEach(l -> {
-        System.out.println(l);
-        TaskDto taskDto = new TaskDto();
-        taskDto.setReleveBancaireId(Integer.parseInt(l));
+//    releveBancaireList.forEach(l -> {
+//        TaskDto taskDto = new TaskDto();
+////        System.out.println(l);
+//        taskDto.setReleveBancaireId(Integer.parseInt(l));
+//        taskDto.setVariableName(finalVariableName);
+//        taskDto.setVariableTypeName(finalVariableTypeName);
+//        taskDto.setProccessesName(processDefinition.getName());
+//        taskDto.setTaskId(finalTaskId);
+//        taskDto.setAssignee(finalTaskAssignee);
+//        taskDto.setName(finalTaskName);
+//        taskDto.setDescription(finalTaskDescription);
+//        taskDto.setPriority(finalTaskPriority);
+//        taskDto.setProcessDefinitionId(finalTaskProcessDefinitionId);
+//        taskDto.setCreateTime(finalTaskCreateTime);
+////        System.out.println("shwoing task dto " + taskDto);
+//        taskRepository.save(taskDto);
+//    });
+
+    TaskDto taskDto = new TaskDto();
+    Entry<String, Object> testVariable = variables.entrySet().iterator().next();
+    System.out.println("variables.values().toString(); " + testVariable.getValue().toString());
+        taskDto.setReleveBancaireId(Integer.parseInt(testVariable.getValue().toString()));
         taskDto.setVariableName(finalVariableName);
         taskDto.setVariableTypeName(finalVariableTypeName);
         taskDto.setProccessesName(processDefinition.getName());
-        taskDto.setId(finalTaskId);
+        taskDto.setTaskId(finalTaskId);
         taskDto.setAssignee(finalTaskAssignee);
         taskDto.setName(finalTaskName);
         taskDto.setDescription(finalTaskDescription);
         taskDto.setPriority(finalTaskPriority);
         taskDto.setProcessDefinitionId(finalTaskProcessDefinitionId);
         taskDto.setCreateTime(finalTaskCreateTime);
-        System.out.println("shwoing task dto " + taskDto);
+//        System.out.println("shwoing task dto " + taskDto);
         taskRepository.save(taskDto);
-
-    });
-
-
-
     return processInformation();
   }
 
@@ -233,7 +238,7 @@ public class ProcessService {
     taskDto.setVariableName(finalVariableName);
     taskDto.setVariableTypeName(finalVariableTypeName);
     taskDto.setProccessesName(processDefinition.getName());
-    taskDto.setId(task.getId());
+    taskDto.setTaskId(task.getId());
     taskDto.setAssignee(task.getAssignee());
     taskDto.setName(task.getName());
     taskDto.setDescription(task.getDescription());
@@ -241,13 +246,16 @@ public class ProcessService {
     taskDto.setProcessDefinitionId(task.getProcessDefinitionId());
     taskDto.setCreateTime(task.getCreateTime());
     System.out.println("shwoing task by id " + taskDto);
+    taskRepository.save(taskDto);
     return taskDto;
   }
 
 
   // complete the task
   public void completeTask(String taskId) {
+
     taskService.complete(taskId);
+    taskRepository.deleteByTaskId(taskId);
   }
 
 }
