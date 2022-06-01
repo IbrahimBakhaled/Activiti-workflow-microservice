@@ -21,7 +21,7 @@ import relevebancaire.workflow.activiti.proxy.ActivitiWorkflowProxy;
 import relevebancaire.workflow.activiti.service.ProcessService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 public class ActivitiControllerImpl implements ActivitiController {
 
 
