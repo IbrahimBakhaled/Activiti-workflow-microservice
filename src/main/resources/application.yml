@@ -11,8 +11,8 @@ server:
     port: 8083
     ssl:
         enabled: true
-        key-alias: relevebancaire
-        key-store: classpath:relevebancaire-keystore.p12
+        key-alias: relevebancaire-docker
+        key-store: classpath:relevebancaire-docker-keystore.p12
         key-store-password: secret
         key-store-type: PKCS12
     servlet:
@@ -23,7 +23,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: root
-        url: jdbc:mysql://localhost:3306/releve-bancaire-cdg?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
+        url: jdbc:mysql://mysqldb:3306/releve-bancaire-cdg?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC
         username: root
     jpa:
         hibernate:

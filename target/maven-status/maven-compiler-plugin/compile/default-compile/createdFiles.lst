@@ -1,0 +1,12 @@
+relevebancaire\workflow\activiti\controller\ActivitiController.class
+relevebancaire\workflow\activiti\ActivitiWorkflowBootloader.class
+relevebancaire\workflow\activiti\model\ReleveBancaire$ReleveBancaireBuilder.class
+relevebancaire\workflow\activiti\dto\TaskDto.class
+relevebancaire\workflow\activiti\model\LigneReleve.class
+relevebancaire\workflow\activiti\proxy\ActivitiWorkflowProxy.class
+relevebancaire\workflow\activiti\dto\TaskDto$TaskDtoBuilder.class
+relevebancaire\workflow\activiti\dao\TaskRepository.class
+relevebancaire\workflow\activiti\controller\ActivitiControllerImpl.class
+relevebancaire\workflow\activiti\model\ReleveBancaire.class
+relevebancaire\workflow\activiti\service\ProcessService.class
+relevebancaire\workflow\activiti\model\OperationCredit.class
