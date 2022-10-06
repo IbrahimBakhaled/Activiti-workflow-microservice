@@ -13,15 +13,15 @@ LABEL Description="Activiti workflow microservice" Version="1.0"
 # the version of the archive
 ARG VERSION=1.0
 
-ARG CERT="relevebancaire-keystore.cer"
+ARG CERT="eureka-0.eureka.default.svc.cluster.download.cer"
 
 # mount the temp volume
 VOLUME /tmp
 
-COPY relevebancaire-docker-keystore.crt $JAVA_HOME/lib/security
+COPY eureka-0.eureka.default.svc.cluster.download.crt $JAVA_HOME/lib/security
 RUN \
     cd $JAVA_HOME/lib/security \
-    && keytool -importcert -alias relevebancaire-docker -storepass changeit -trustcacerts -noprompt -keystore cacerts -file relevebancaire-docker-keystore.crt
+    && keytool -importcert -alias relevebancaire-docker -storepass changeit -trustcacerts -noprompt -keystore cacerts -file eureka-0.eureka.default.svc.cluster.download.crt
 #    && keytool -keystore cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias ldapcert -file ldap.cer
 # Add the service as app.jar
 ADD target/microservice-relevebancaire-activiti-workflow-${VERSION}-SNAPSHOT.jar app.jar
